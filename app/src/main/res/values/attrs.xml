@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomChartComponent">
+        <attr name="percentage_value" format="integer" />
+        <attr name="chart_color" format="color" />
+    </declare-styleable>
+
+
+</resources>
