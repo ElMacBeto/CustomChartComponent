@@ -143,4 +143,7 @@ class CustomChartComponent : ConstraintLayout {
             chartBar.setProgress(value)
     }
 
+    fun setColor(newColor:Int){
+        chartBar.setColor(newColor)
+    }
 }
