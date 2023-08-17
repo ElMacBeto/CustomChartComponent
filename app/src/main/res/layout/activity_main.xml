@@ -56,6 +56,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/radar_chart"
@@ -124,6 +125,40 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/btn_explora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explora acciones "
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/blue"
+                style="?attr/materialButtonOutlinedStyle"
+                app:cornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/container_rv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.2"/>
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/btn_comparativas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mis comparativas "
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                style="?attr/materialButtonOutlinedStyle"
+                app:cornerRadius="8dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_explora"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
