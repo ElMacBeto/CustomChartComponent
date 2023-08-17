@@ -15,6 +15,7 @@ import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.card.MaterialCardView
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,9 +41,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindView() {
-        val includeChart1 = findViewById<ConstraintLayout>(R.id.chart1)
+        val includeChart1 = findViewById<MaterialCardView>(R.id.chart1)
         chart1 = includeChart1.findViewById(R.id.chart)
-        val includeChart2 = findViewById<ConstraintLayout>(R.id.chart2)
+        val includeChart2 = findViewById<MaterialCardView>(R.id.chart2)
         chart2 = includeChart2.findViewById(R.id.chart)
         radarChart = findViewById(R.id.radar_chart)
         rvCharts = findViewById(R.id.rv_linear_charts)
