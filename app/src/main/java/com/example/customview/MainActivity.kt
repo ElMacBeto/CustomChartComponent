@@ -86,9 +86,11 @@ class MainActivity : AppCompatActivity() {
         radarChart.webColor = getColor(R.color.black)
         radarChart.webLineWidthInner = 1f
         radarChart.webColorInner = Color.LTGRAY
+        radarChart.isRotationEnabled=false
         radarChart.invalidate()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setCustomCharts(){
         chart1.setBarValue(90)
         chart2.setBarValue(40)
