@@ -13,34 +13,51 @@
         tools:ignore="MissingConstraints">
 
 
+        <ImageView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:src="@drawable/toolbar_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/img_label"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
             android:src="@drawable/img_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/fingerprint"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
             android:src="@drawable/img_fingerprint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
-            android:text="Sabado 22 de Julio, 2023\n Erick Arturo aqui tienes tu \nFooprint Compass"
+            android:layout_marginTop="36dp"
+            android:text="Sabado 22 de Julio 2023"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_label" />
+            app:layout_constraintTop_toBottomOf="@id/img_label"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_1"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:text="Erick Arturo, aqui tienes tu\nFootPrint Compass"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
