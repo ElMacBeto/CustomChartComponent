@@ -5,12 +5,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customview.adapter.CustomLinearChartAdapter
 import com.example.customview.model.ChartModel
-import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
@@ -23,11 +21,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var chart1:CustomChartComponent
     private lateinit var chart2:CustomChartComponent
-    private lateinit var radarChart: RadarChart
+    private lateinit var radarChart: CustomRadarChart
     private lateinit var rvCharts:RecyclerView
     private lateinit var adapter:CustomLinearChartAdapter
     private lateinit var chart2axie:TextView
     private lateinit var chart2Value:TextView
+    private lateinit var chart2Title:TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,13 +48,15 @@ class MainActivity : AppCompatActivity() {
         rvCharts = findViewById(R.id.rv_linear_charts)
         chart2axie = includeChart2.findViewById(R.id.tv_axis_label)
         chart2Value = includeChart2.findViewById(R.id.tv_value_label)
+        chart2Title = includeChart2.findViewById(R.id.tv_chart_title)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun setRadarChars(){
-        val labels = listOf("H2O", "Social", "Media", "Economic", "CO2 EQ")
-        val values = listOf(80f, 40f, 60f, 60f, 90f)
+        val labels = arrayOf("H2O", "Social", "Media", "Economic", "CO2 EQ")
+        val colors = arrayOf(R.color.chart1,R.color.chart2,R.color.chart3,R.color.chart4,R.color.chart5)
 
+        val values = listOf(80f, 40f, 60f, 60f, 90f)
         val entries = mutableListOf<RadarEntry>()
 
         for (i in values.indices) {
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         val xAxis = radarChart.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(labels)
-        xAxis.textSize = 12f
+        xAxis.textColor = getColor(android.R.color.transparent)
 
         val yAxis = radarChart.yAxis
         yAxis.isEnabled = false
@@ -87,7 +88,8 @@ class MainActivity : AppCompatActivity() {
         radarChart.webColor = getColor(R.color.black)
         radarChart.webLineWidthInner = 1f
         radarChart.webColorInner = Color.LTGRAY
-        radarChart.isRotationEnabled=false
+        radarChart.isRotationEnabled = false
+        radarChart.setMarkColors(colors)
         radarChart.invalidate()
     }
 
@@ -98,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         chart2.setColor(getColor(R.color.chart3))
         chart2axie.text = "Social"
         chart2Value.text = "40%"
+        chart2Title.text = "Area de mejora"
     }
 
     private fun setChartsRV() {
@@ -112,5 +115,4 @@ class MainActivity : AppCompatActivity() {
         rvCharts.layoutManager =  LinearLayoutManager(this)
         rvCharts.adapter = adapter
     }
-
 }

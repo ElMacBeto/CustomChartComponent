@@ -35,7 +35,7 @@
             android:layout_marginStart="14dp"
             android:text="CO2 EQ"
             android:textColor="@color/blue2"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +46,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
-            android:layout_marginBottom="12dp"
             android:text="90%"
             android:textColor="@color/blue2"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_title" />
@@ -76,7 +75,7 @@
             <com.example.customview.CustomProgressBar
                 android:id="@+id/custom_bar"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
