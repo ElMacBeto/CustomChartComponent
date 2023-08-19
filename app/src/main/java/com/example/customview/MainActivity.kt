@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         val yAxis = radarChart.yAxis
         yAxis.isEnabled = false
         yAxis.axisMinimum = 0f
+        yAxis.setLabelCount(11, true)
 
         val radarData = RadarData(radarDataSet)
         radarChart.data = radarData
@@ -105,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setChartsRV() {
         val  chartsModels = arrayListOf(
-            ChartModel(100f,"CO2 EQ",R.color.chart1),
+            ChartModel(90f,"CO2 EQ",R.color.chart1),
             ChartModel(80f,"H2O",R.color.chart2),
             ChartModel(40f,"SOCIAL",R.color.chart3),
             ChartModel(60f,"MEDIA",R.color.chart4),

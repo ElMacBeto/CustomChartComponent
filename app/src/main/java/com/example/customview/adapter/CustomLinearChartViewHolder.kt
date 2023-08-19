@@ -22,9 +22,14 @@ class CustomLinearChartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
     fun bindData(chartModel: ChartModel){
         chartTitleLabel.text = chartModel.label
-        chartValueLabel.text = chartModel.value.toString()
+        chartValueLabel.text = setPercentageFormat(chartModel.value)
         customBar.setColor(ctx.getColor(chartModel.color))
         customBar.setOrientation(VERTICAL_ORIENTATION)
         customBar.setProgress(chartModel.value.toInt())
     }
+
+    private fun setPercentageFormat(value:Float):String{
+        return "${value.toInt()}%"
+    }
+
 }

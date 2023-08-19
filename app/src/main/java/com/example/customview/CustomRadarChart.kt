@@ -23,6 +23,7 @@ class CustomRadarChart(context: Context?, attrs: AttributeSet?) :
     private val mFontMetricsBuffer = Paint.FontMetrics()
     private val mDrawTextRectBuffer = Rect()
     private val mAxisLabelPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mWebPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     fun setMarkColors(colors: Array<Int>) {
         markColors = colors
@@ -30,15 +31,59 @@ class CustomRadarChart(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
+        drawLines(canvas!!)
         renderXLabelsWithCircles(canvas)
-        drawLines()
+        super.onDraw(canvas)
     }
 
-    private fun drawLines() {
-        val drawLabelAnchor = MPPointF.getInstance(0f, 0f)
+    private fun drawLines(c: Canvas) {
+        val sliceangle: Float = this.sliceAngle
 
+        val factor: Float = this.factor
+        val rotationangle: Float = this.rotationAngle
 
+        val center: MPPointF = this.centerOffsets
+
+        mWebPaint.strokeWidth = this.webLineWidth
+        mWebPaint.color = this.webColor
+        mWebPaint.alpha = this.webAlpha
+
+        val xIncrements: Int = 1 + this.skipWebLineCount
+        val maxEntryCount: Int = this.data.maxEntryCountSet.entryCount
+
+        val p = MPPointF.getInstance(0f, 0f)
+
+        var i = 0
+        while (i < maxEntryCount) {
+            Utils.getPosition(
+                center,
+                this.yRange * factor + 50f,
+                sliceangle * i + rotationangle,
+                p
+            )
+            c.drawLine(center.x, center.y, p.x, p.y, mWebPaint)
+            i += xIncrements
+        }
+
+        MPPointF.recycleInstance(p)
+
+        mWebPaint.strokeWidth = this.webLineWidthInner
+        mWebPaint.color = context.getColor(R.color.black)
+        mWebPaint.alpha = this.webAlpha
+
+        val labelCount: Int = this.yAxis.mEntryCount-1
+        val p1out = MPPointF.getInstance(0f, 0f)
+        val p2out = MPPointF.getInstance(0f, 0f)
+
+        for (i in 0 until this.data.entryCount) {
+            val r: Float = (this.yAxis.mEntries[labelCount] - this.yChartMin) * factor
+            Utils.getPosition(center, r, sliceangle * i + rotationangle, p1out)
+            Utils.getPosition(center, r, sliceangle * (i + 1) + rotationangle, p2out)
+            c.drawLine(p1out.x, p1out.y, p2out.x, p2out.y, mWebPaint)
+        }
+
+        MPPointF.recycleInstance(p1out)
+        MPPointF.recycleInstance(p2out)
     }
 
     private fun renderXLabelsWithCircles(c: Canvas?) {
@@ -78,7 +123,6 @@ class CustomRadarChart(context: Context?, attrs: AttributeSet?) :
     private fun drawCircle(
         c: Canvas?,
         color: Int,
-
         x: Float,
         y: Float,
         anchor: MPPointF?,
