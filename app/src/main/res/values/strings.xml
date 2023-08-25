@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CustomView</string>
+    <string name="date_label">Sabado 22 de Julio 2023</string>
+    <string name="welcome_label">, aqui tienes tu\nFootPrint Compass:</string>
 </resources>

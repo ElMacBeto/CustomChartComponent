@@ -12,25 +12,24 @@ import com.github.mikephil.charting.utils.Utils
 class CustomRadarChart(context: Context?, attrs: AttributeSet?) :
     RadarChart(context, attrs) {
 
-    private var markColors: Array<Int> = arrayOf(
-        R.color.white,
-        R.color.white,
-        R.color.white,
-        R.color.white,
-        R.color.white
-    )
-
+    private var markColors: MutableList<Int> = mutableListOf<Int>()
     private val mFontMetricsBuffer = Paint.FontMetrics()
     private val mDrawTextRectBuffer = Rect()
     private val mAxisLabelPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mWebPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-    fun setMarkColors(colors: Array<Int>) {
+
+    fun setMarkColors(colors: MutableList<Int>) {
         markColors = colors
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {
+        if (markColors.isEmpty()){
+            for (i in 0 until this.data.maxEntryCountSet.entryCount) {
+                markColors.add(R.color.white)
+            }
+        }
         drawLines(canvas!!)
         renderXLabelsWithCircles(canvas)
         super.onDraw(canvas)
