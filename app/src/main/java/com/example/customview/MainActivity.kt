@@ -173,5 +173,5 @@ class MainActivity : AppCompatActivity() {
         return currentDate.format(formatter)
     }
 
-
 }
+
